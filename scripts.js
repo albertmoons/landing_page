@@ -37,3 +37,32 @@ function handler() {
 title.forEach(elem => elem.addEventListener('click', handler))
 
 
+// 상자 누르면 shadow 활성화
+
+const charges = document.querySelectorAll('.charges__name span');
+const box = document.querySelectorAll('.charges__plan-month');
+let id = '';
+
+function chooseHandler(e) {
+    charges.forEach(elem => elem.classList.remove('choose'));
+    this.classList.add('choose');
+
+    const target = e.target;
+    id = target.dataset.shadow;
+    console.log('id :' + id);
+
+    if (id == 1) {
+        box[0].classList.add('shadow');
+        box[1].classList.remove('shadow');
+
+    } else if (id == 2) {
+        box[0].classList.remove('shadow');
+        box[1].classList.add('shadow');
+    }
+
+}
+
+charges.forEach(el => el.addEventListener('click', chooseHandler))
+
+
+
